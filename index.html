@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>茶小满 · 开业活动（样品）</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; background:#FFFBEA; color:#26221C; }
+  .hero { background:linear-gradient(160deg,#FFEC8B,#FFD93D 55%,#FFC400); padding:56px 24px 40px; text-align:center; }
+  .badge { display:inline-block; background:#111827; color:#FFD93D; padding:6px 14px; border-radius:999px; font-size:13px; letter-spacing:2px; }
+  h1 { font-size:44px; margin:18px 0 8px; }
+  .sub { font-size:17px; opacity:.85; }
+  .big { margin:26px auto 6px; font-size:30px; font-weight:800; color:#111827; }
+  #countdown { font-size:15px; background:rgba(255,255,255,.55); display:inline-block; padding:8px 16px; border-radius:12px; margin-top:14px; }
+  .menu { max-width:560px; margin:0 auto; padding:28px 20px 8px; }
+  .menu h2 { font-size:22px; margin-bottom:14px; }
+  .item { display:flex; justify-content:space-between; align-items:center; background:#fff; border-radius:14px; padding:14px 16px; margin-bottom:10px; box-shadow:0 2px 8px rgba(38,34,28,.08); }
+  .item b { font-size:16px; } .item span { color:#888; font-size:13px; display:block; margin-top:2px; }
+  .price { font-weight:800; color:#111827; font-size:17px; white-space:nowrap; }
+  .price s { color:#bbb; font-weight:400; font-size:13px; margin-right:6px; }
+  .cta { max-width:560px; margin:10px auto 40px; padding:0 20px; }
+  button { width:100%; padding:16px; font-size:17px; font-weight:700; color:#FFD93D; background:#111827; border:none; border-radius:14px; }
+  button:active { opacity:.85; }
+  #msg { text-align:center; margin-top:12px; color:#111827; font-weight:600; min-height:22px; }
+  footer { text-align:center; color:#aaa; font-size:12px; padding-bottom:28px; }
+</style>
+</head>
+<body>
+  <section class="hero">
+    <div class="badge">新 店 开 业</div>
+    <h1>🧋 茶小满</h1>
+    <p class="sub">现煮珍珠 · 当日鲜奶 · 第二杯半价</p>
+    <div class="big">全场第二杯半价 · 前100名送小料</div>
+    <div id="countdown">活动倒计时加载中…</div>
+  </section>
+
+  <section class="menu">
+    <h2>招牌必点</h2>
+    <div class="item"><div><b>黑糖珍珠鲜奶</b><span>现熬黑糖挂壁，珍珠 Q 弹</span></div><div class="price"><s>¥19</s>¥16</div></div>
+    <div class="item"><div><b>杨枝甘露</b><span>芒果 + 西柚 + 椰奶，夏日第一名</span></div><div class="price"><s>¥21</s>¥18</div></div>
+    <div class="item"><div><b>茉莉奶绿</b><span>清爽不腻，学生党最爱</span></div><div class="price"><s>¥15</s>¥12</div></div>
+    <div class="item"><div><b>满杯红柚</b><span>整颗红西柚现剥，酸甜解渴</span></div><div class="price"><s>¥18</s>¥15</div></div>
+  </section>
+
+  <div class="cta">
+    <button onclick="reserve()">领开业券（样品按钮）</button>
+    <div id="msg"></div>
+  </div>
+
+  <footer>本页面为接单样品 · 虚构店铺，仅作展示</footer>
+
+<script>
+  // 活动结束时间：打开页面后 3 天，演示倒计时功能
+  var end = Date.now() + 3*24*3600*1000;
+  function tick(){
+    var left = end - Date.now();
+    if(left <= 0){ document.getElementById('countdown').textContent = '活动已结束'; return; }
+    var d = Math.floor(left/86400000), h = Math.floor(left%86400000/3600000),
+        m = Math.floor(left%3600000/60000), s = Math.floor(left%60000/1000);
+    document.getElementById('countdown').textContent = '⏰ 距活动结束还有 ' + d + '天 ' + h + '时 ' + m + '分 ' + s + '秒';
+  }
+  tick(); setInterval(tick, 1000);
+  function reserve(){
+    document.getElementById('msg').textContent = '✅ 已领取！到店出示此页面即可（样品演示）';
+  }
+</script>
+</body>
+</html>
